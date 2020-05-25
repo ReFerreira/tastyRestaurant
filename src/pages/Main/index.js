@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { signOut } from '../../store/modules/auth/actions';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -13,10 +13,13 @@ export default function Main() {
   }
   return (
     <Container>
-      <h1>{profile.name}</h1>
-      <button type="button" onClick={handleSignOut}>
-        Sair do sistema
-      </button>
+      <Content>
+        <strong>Welcome</strong>
+        <h1>{profile.name}</h1>
+        <button type="button" onClick={handleSignOut}>
+          Log Out
+        </button>
+      </Content>
     </Container>
   );
 }
