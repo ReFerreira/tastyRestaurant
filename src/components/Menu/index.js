@@ -1,14 +1,12 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import { FaHome, FaWhatsapp } from 'react-icons/fa';
-import { MdExitToApp, MdLink } from 'react-icons/md';
+import { FaHome, FaList } from 'react-icons/fa';
+import { MdExitToApp } from 'react-icons/md';
 
 import { useDispatch } from 'react-redux';
-// useSelector,
 
 import { signOut } from '../../store/modules/auth/actions';
 
-import { SideBar } from './styles';
+import { SideBar, Item } from './styles';
 
 function Menu() {
   const dispatch = useDispatch();
@@ -18,30 +16,24 @@ function Menu() {
   return (
     <SideBar>
       <ul>
-        <li>
+        <Item to="/">
           <div>
             <FaHome size="1.5rem" />
             <span>Home</span>
           </div>
-        </li>
-        <li>
+        </Item>
+        <Item to="/order">
           <div>
-            <FaWhatsapp size="1.5rem" />
-            <span>WhatsApp</span>
+            <FaList size="1.5rem" />
+            <span>My Orders</span>
           </div>
-        </li>
-        <li>
-          <div>
-            <MdLink size="1.5rem" />
-            <span>Portfolio</span>
-          </div>
-        </li>
-        <li onClick={handleSignOut}>
+        </Item>
+        <Item to="/" onClick={handleSignOut}>
           <div>
             <MdExitToApp size="1.5rem" />
             SignOut
           </div>
-        </li>
+        </Item>
       </ul>
     </SideBar>
   );

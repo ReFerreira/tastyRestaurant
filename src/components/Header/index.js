@@ -6,7 +6,16 @@ import { shade } from 'polished';
 import { MdMenu } from 'react-icons/md';
 import Menu from '../Menu';
 
-import { Container, NavBar, TopMenu, SideMenu } from './styles';
+import logo from '../../assets/logo.png';
+
+import {
+  Container,
+  NavBar,
+  TopMenu,
+  SideMenu,
+  Logo,
+  ThemeSwitcher,
+} from './styles';
 
 function Header({ toggleTheme }) {
   const [visible, setVisible] = useState(false);
@@ -20,18 +29,24 @@ function Header({ toggleTheme }) {
         <NavBar>
           <MdMenu size={24} cursor="pointer" onClick={toggleShow} />
         </NavBar>
-
-        <Switch
-          onChange={toggleTheme}
-          checked={title === 'dark'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
-          offColor={shade(0.15, colors.primary)}
-          onColor={colors.secundary}
-        />
+        <Logo to="/main">
+          <img src={logo} alt="TastyRestaurant" />
+          <h2> Tasty Restaurant</h2>
+        </Logo>
+        <ThemeSwitcher>
+          <Switch
+            onChange={toggleTheme}
+            checked={title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={20}
+            offColor={shade(0.15, colors.primary)}
+            onColor={colors.secundary}
+          />
+          <p> {title} </p>
+        </ThemeSwitcher>
       </TopMenu>
       <SideMenu visible={visible}>
         <Menu />
